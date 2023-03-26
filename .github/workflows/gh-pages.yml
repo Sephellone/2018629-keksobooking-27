@@ -3,7 +3,7 @@ name: Deploy to GitHub-Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
@@ -27,12 +27,9 @@ jobs:
       - name: Run checks
         run: npm run lint
 
-      - name: Build project
-        run: npm run build
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          folder: ./build
+          folder: ./
           branch: gh-pages
